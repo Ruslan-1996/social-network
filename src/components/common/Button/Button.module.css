@@ -1,0 +1,19 @@
+.button {
+    margin-top: 10px;
+    background-color: yellow;
+    font-size: 1.8em;
+    height: 30px;
+    width: 150px;
+    color: black;
+    border: none;
+    float: right;
+    display: flex;
+    justify-content: start;
+    padding-left: 10px;
+    outline: none;
+    cursor: pointer;
+}
+
+.button:active {
+    background-color: #f1f108;
+}

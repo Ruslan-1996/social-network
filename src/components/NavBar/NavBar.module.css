@@ -1,0 +1,35 @@
+.nav{
+    grid-area: nav;
+    background-color: yellow;
+    height: 640px;
+}
+
+.nav a{
+    color: black;
+    text-decoration: none;
+}
+
+.item_first {
+    margin-top: 13px;
+}
+
+.item a{
+    font-size: 1.5em;
+    padding: 7px 0 7px 20px;
+    width: 100%;
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+.item a:hover {
+    background-color: #f1f108;
+}
+
+.item a.active {
+    background-color: #f1f108;
+    border-right: 3px solid black;
+}
+
+.item_setting {
+    margin-top: 30px;
+}

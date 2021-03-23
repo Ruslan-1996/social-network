@@ -1,0 +1,15 @@
+.message {
+    display: flex;
+}
+
+.messageInto {
+    margin: 5px 0 5px 10px;
+    min-height: 15px;
+    min-width: 20px;
+    padding: 7px;
+    background-color: yellow;
+    display: inline-block;
+    padding: 7px;
+    border-radius: 10px 10px 10px 0;
+    float: left;
+}

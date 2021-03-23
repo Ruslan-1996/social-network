@@ -1,0 +1,22 @@
+.friendItem{
+    padding: 2px 2px 0px 2px;
+    display: flex;
+    width: 30%;
+    flex-direction: column;
+    text-align: center;
+}
+
+.friendItem:hover{
+    background-color: #f1f108;
+    display: flex;
+    width: 30%;
+    flex-direction: column;
+}
+
+.avatarUser{
+    width: 100%;
+    height: 56.5px;
+    background-color: white;
+    object-fit: cover;
+    object-position: 0 0;
+}

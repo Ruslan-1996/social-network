@@ -1,0 +1,42 @@
+.inputMessage {
+    height: 40px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border-top: 1px solid yellow;
+    padding: 30px 10px 30px 10px;
+    box-sizing: border-box;
+}
+
+.textMessage{
+    width: calc(100% - 40px);
+    height: 40px;
+    outline: none;
+    border: none;
+    background-color: #d1d1d1;
+    padding: 5px;
+    box-sizing: border-box;
+    color: #414141;
+    resize: none;
+    margin-right: 10px;
+}
+
+.buttonSend {
+    border: none;
+    background-color: yellow;
+    width: 40px;
+    height: 40px;
+    outline: none;
+    cursor: pointer;
+}
+
+.buttonSend:active{
+    background-color: #f1f108;
+}
+
+.buttonImg {
+    position: relative;
+    width: 25px;
+    margin: 0 auto;
+    top: 1px;
+}

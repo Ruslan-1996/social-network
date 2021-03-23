@@ -1,0 +1,53 @@
+.post {
+    width: 95%;
+    margin-bottom: 30px;
+}
+
+.post_content {
+    display: grid;
+    grid-template-areas:
+  'post_logo post_text ';
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 20fr;
+    grid-gap: 10px;
+}
+
+.post_logo {
+    grid-area: post_logo;
+    height: 60px;
+    width: 60px;
+    object-fit: cover;
+    object-position: 10% 20%;
+}
+
+.post_text {
+    grid-area: post_text;
+    display: inline;
+    float: start;
+    padding: 10px;
+    font-size: 1.5em;
+}
+
+.post_like {
+    float: right;
+    width: 60px;
+    height: 25px;
+    background-color: yellow;
+    font-size: 1.5em;
+    outline: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.post_like:active {
+    background-color: #f1f108;
+}
+
+.post_likes {
+    float: right;
+    font-size: 1.5em;
+    margin-right: 10px;
+}

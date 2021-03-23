@@ -1,0 +1,42 @@
+.profile_logo {
+    width: 100%;
+    height: 250px;
+    object-position: 0 10%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.descriptions {
+    display: grid;
+    grid-template-areas:
+  'descriptions_avatar descriptions-text';
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 4fr;
+    grid-gap: 10px;
+}
+
+.descriptions_logo{
+    grid-area: descriptions_avatar;
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+    object-position: 10% 20%;
+}
+
+.descriptions_text{
+    grid-area: descriptions-text;
+}
+
+.descriptions_name{
+    font-size: 2em;
+}
+
+.descriptions_about p {
+    font-size: 1.3em;
+    font-weight: 500;
+    margin: 7px 0 0 0;
+}
+
+.contacts {
+    font-weight: 700 !important;
+}

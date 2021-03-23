@@ -1,0 +1,54 @@
+.login {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input {
+    border: none;
+    background-color: #d1d1d1;
+    margin-bottom: 10px;
+    height: 30px;
+    width: 200px;
+    padding: 0 8px 0 8px;
+    box-sizing: border-box;
+    outline: none !important;
+}
+
+.inputPassword {
+    padding-right: 35px;
+}
+
+.passwordIcon {
+    color: #414141;
+    position: relative;
+    bottom: 33px;
+    left: 175px;
+    cursor: pointer;
+}
+
+.button{
+    background-color: yellow;
+    font-size: 1.5em;
+    height: 30px;
+    width: 120px;
+    color: black;
+    border: none;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding-left: 10px;
+    outline: none;
+    cursor: pointer;
+}
+
+.button:active {
+    background-color: #f1f108;
+}
+
+.errorAuth {
+    color: red;
+
+}

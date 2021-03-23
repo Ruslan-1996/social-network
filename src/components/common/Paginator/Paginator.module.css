@@ -1,0 +1,33 @@
+.buttonChangeList {
+    background-color: yellow;
+    border: 2px solid black;
+    outline: none!important;
+    box-sizing: border-box;
+    height: 20px;
+    width: 40px;
+}
+
+.buttonChangeList:active {
+    background-color: #f1f108;
+}
+
+.numbersPage {
+    background-color: yellow;
+    height: 20px;
+    width: 30px;
+    margin: 1px;
+    border: none;
+    outline: none !important;
+    cursor: pointer;
+}
+
+.selectedPage {
+    background-color: #f1f108;
+    border: 2px solid black;
+    box-sizing: border-box;
+
+}
+
+.numbersPage:hover {
+    background-color: #f1f108;
+}

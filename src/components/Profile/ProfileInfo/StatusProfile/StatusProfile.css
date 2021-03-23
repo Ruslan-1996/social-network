@@ -1,0 +1,44 @@
+.StatusProfile_status {
+    font-size: 20px;
+}
+
+.StatusProfile_inputBlock{
+    height: 50px;
+    width: 400px;
+}
+
+.StatusProfile_input {
+    width: 100%;
+    outline: none !important;
+    margin-bottom: 5px;
+    border: none;
+    background-color: #d1d1d1;
+    padding: 3px;
+    color: #414141;
+}
+
+.StatusProfile_inputButton {
+    height: 20px;
+    width: 20px;
+    border: none;
+    outline: none !important;
+    background-color: yellow;
+}
+
+.StatusProfile_inputButton:hover {
+    background-color: #f1f108;
+}
+
+.StatusProfile_inputButton:active {
+    background-color: #f1f108;
+    border: 1px solid black;
+}
+
+i.check {
+    display: inline-block;
+    width: 5px;
+    height: 10px;
+    border: solid #414141;
+    border-width: 0 3px 3px 0;
+    transform: rotate( 45deg);
+}
