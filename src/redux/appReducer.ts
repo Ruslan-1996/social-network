@@ -1,13 +1,20 @@
 import {getAuthUser} from "./authReducer";
 import {getSideBarUsers} from "./sideBarReducer";
+import {InferActionTypes} from "./reduxStore";
 
 const INITIALIZED_SUCCESS = 'ruslnetwork/appReducer/INITIALIZED_SUCCESS';
 
-let initialState = {
+export type InitialStateType = {
+    initialized: boolean
+}
+
+const initialState: InitialStateType = {
     initialized: false,
 }
 
-const appReducer = (state = initialState, action) => {
+export type ActionType = InferActionTypes<typeof actions>
+
+const appReducer = (state = initialState, action: ActionType): InitialStateType => {
     switch (action.type) {
         case INITIALIZED_SUCCESS:
             return {
@@ -19,18 +26,17 @@ const appReducer = (state = initialState, action) => {
     }
 }
 
-export const initializedSuccess = () => {
-    return {
-        type: INITIALIZED_SUCCESS,
-    }
+export const actions = {
+    initializedSuccess: () => ({type: INITIALIZED_SUCCESS})
 }
 
-export const initializeApp = (userId) => {
-    return (dispatch) => {
-       let promise = dispatch(getAuthUser(userId));
+
+export const initializeApp = () => {
+    return (dispatch: any) => {
+       let promise = dispatch(getAuthUser());
        let promiseSideBar = dispatch(getSideBarUsers())
         Promise.all([promise, promiseSideBar]).then(() => {
-            dispatch(initializedSuccess());
+            dispatch(actions.initializedSuccess());
 
         })
     }
