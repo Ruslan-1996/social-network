@@ -48,7 +48,7 @@ type SetSideBarUsersActionType = {
     users: Array<UserType>
 }
 
-let setSideBarUsers = (users: Array<UserType>): SetSideBarUsersActionType => {
+export const setSideBarUsers = (users: Array<UserType>): SetSideBarUsersActionType => {
     return {
         type: SET_SIDE_BAR_USERS,
         users
@@ -56,7 +56,7 @@ let setSideBarUsers = (users: Array<UserType>): SetSideBarUsersActionType => {
 }
 
 export const getSideBarUsers = () => {
-    return async (dispatch: any, getState: AppStateType) => {
+    return async (dispatch: any) => {
         let data = await usersAPI.getUsers(1, 20, true, '')
         dispatch(setSideBarUsers(data.items))
     }

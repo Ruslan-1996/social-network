@@ -33,7 +33,7 @@ export const actions = {
 
 
 export const initializeApp = () => {
-    return (dispatch: any, getState: AppStateType) => {
+    return (dispatch: any) => {
        let promise = dispatch(getAuthUser());
         Promise.all([promise]).then(() => {
             dispatch(actions.initializedSuccess());

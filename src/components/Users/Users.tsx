@@ -40,15 +40,17 @@ let Users: React.FC<PropsType> = (props) => {
     }
 
 
-
     return (
         <div className={s.wrapper}>
-            <select onChange={handleChange} value={props.currentPage} className={s.selectPage}>
-                {pages.map(p => (
-                    <option key={p} className={s.optionPage}>{p} </option>
-                ))}
-            </select>
-            <SearchForm onFilterChanged={props.onFilterChanged}/>
+            <div className={s.menu}>
+                <select onChange={handleChange} value={props.currentPage} className={s.selectPage}>
+                    {pages.map(p => (
+                        <option key={p} className={s.optionPage}>{p} </option>
+                    ))}
+                </select>
+
+                <SearchForm onFilterChanged={props.onFilterChanged}/>
+            </div>
             {usersData}
             <Paginator totalItemsCount={props.totalUsersCount} pageSize={props.pageSize}
                        currentPage={props.currentPage} onPageChanged={props.onPageChanged}/>

@@ -1,6 +1,7 @@
 import React from 'react';
 import {Field, Form, Formik} from "formik";
 import {required} from "../../../utils/Validators/validator";
+import s from './SearchForm.module.css'
 
 type PropsType = {
     onFilterChanged: (term: string) => void
@@ -8,21 +9,22 @@ type PropsType = {
 
 let SearchForm: React.FC<PropsType> = React.memo((props) => {
 
-    const onSubmit = (value: {term: string}, {setSubmitting}: {setSubmitting: (isSubmitting: boolean) => void}) => {
+    const onSubmit = (value: { term: string }, {setSubmitting}: { setSubmitting: (isSubmitting: boolean) => void }) => {
         props.onFilterChanged(value.term)
     }
 
     return (
         <div>
             <Formik
-                initialValues={{ term: '' }}
-                validate={values => {}}
+                initialValues={{term: ''}}
+                validate={values => {
+                }}
                 onSubmit={onSubmit}
             >
-                {({ isSubmitting }) => (
+                {({isSubmitting}) => (
                     <Form>
-                        <Field type="text" name="term" placeholder={'Search'} validate={required}/>
-                        <button type="submit" disabled={isSubmitting}>
+                        <Field type="text" name="term" placeholder={'Search'} validate={required} className={s.input}/>
+                        <button type="submit" disabled={isSubmitting} className={s.button}>
                             Submit
                         </button>
                     </Form>

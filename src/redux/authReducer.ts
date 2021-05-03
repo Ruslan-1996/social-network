@@ -4,6 +4,7 @@ import {authAPI} from "../api/auth-api";
 import {securityAPI} from "../api/security-api";
 import {BaseThunkType, InferActionTypes} from "./reduxStore";
 import {getSideBarUsers} from "./sideBarReducer";
+import {initializeApp} from "./appReducer";
 
 const SET_USER_DATA = 'ruslnetwork/authReducer/SET_USER_DATA';
 const ADD_USER_PHOTO = 'ruslnetwork/authReducer/ADD_USER_PHOTO';
@@ -101,11 +102,12 @@ const setCaptchaURL = (): ThunkType => {
 }
 
 export const login = (email: any, password: any, rememberMe: any, captcha: any): ThunkType => {
-    return async (dispatch) => {
+    return async (dispatch: any) => {
         const data = await authAPI.login(email, password, rememberMe, captcha)
         if (data.resultCode === ResultCodesForCaptchaEnum.Success) {
             dispatch(getAuthUser())
             dispatch(actions.errorAuth(''))
+            dispatch(getSideBarUsers())
         } else {
             if (data.resultCode === ResultCodesForCaptchaEnum.CaptchaIsRequired) {
                 dispatch(setCaptchaURL())
@@ -117,7 +119,7 @@ export const login = (email: any, password: any, rememberMe: any, captcha: any):
 }
 
 export const logout = (): ThunkType => {
-    return async (dispatch) => {
+    return async (dispatch: any) => {
         const response = await authAPI.logout()
         if (response.data.resultCode === ResultCodesEnum.Success) {
             dispatch(actions.setAuthUserData(null, null, null, false))

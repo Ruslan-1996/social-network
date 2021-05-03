@@ -16,12 +16,14 @@ const FriendsSideBar: React.FC<PropsType> = (props) => {
 
 
     const dispatch = useDispatch()
-    const isAuth = useSelector((state: AppStateType)=> state.auth.isAuth)
+    const isAuth = useSelector((state: AppStateType) => state.auth.isAuth)
 
-    if (isAuth){
+
     useEffect(() => {
-        dispatch(getSideBarUsers())
-        }, [])}
+        if (isAuth) {
+            dispatch(getSideBarUsers())
+        }
+    }, [])
 
     let nameUserElement = props.nameUserElement.map(user => <NavFriend name={user.name} avatarUser={user.photos.small}
                                                                        key={user.id} id={user.id}
