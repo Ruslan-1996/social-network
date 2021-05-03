@@ -1,16 +1,17 @@
 .friendItem{
     padding: 2px 2px 0px 2px;
     display: flex;
-    width: 30%;
+    width: 97%;
     flex-direction: column;
     text-align: center;
 }
 
+.friendItemPreloader {
+    background-color: #f1f108;
+}
+
 .friendItem:hover{
     background-color: #f1f108;
-    display: flex;
-    width: 30%;
-    flex-direction: column;
 }
 
 .avatarUser{
@@ -19,4 +20,9 @@
     background-color: white;
     object-fit: cover;
     object-position: 0 0;
+}
+
+.name{
+    width: 55px;
+    word-wrap: break-word;
 }

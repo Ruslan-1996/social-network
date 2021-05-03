@@ -40,3 +40,75 @@
 .contacts {
     font-weight: 700 !important;
 }
+
+.editButton {
+    background-color: yellow;
+    border: none;
+    height: 25px;
+    padding: 0 10px 0 10px;
+    font-size: 1.3em;
+    margin-right: 10px;
+    outline: none!important;
+    cursor: pointer;
+}
+
+.editButton:active {
+    background-color: #f1f108;
+}
+
+.form {
+    background-color: #d1d1d1;
+    border: none;
+    height: 25px;
+    padding-left: 10px;
+    width: 100%;
+}
+
+.checkbox input[type="checkbox"] {
+    display: none;
+}
+.checkbox input[type="checkbox"]:checked + .wrapper {
+    background-color: yellow;
+    position: relative;
+}
+
+.checkbox input[type="checkbox"]:checked + .wrapper:hover {
+    background-color: #f1f108;
+    border: 1px solid #ffff00;
+    transition: 0s;
+}
+
+.checkbox .wrapper {
+    background-color: #f5f1f1;
+    border: 1px solid #ffff00;
+    box-sizing: border-box;
+    width: 25px;
+    height: 25px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    outline: none;
+    margin: 5px 0 0 5px;
+}
+
+.checkbox .wrapper:hover {
+    border: 5px solid #ffff00;
+    transition: 0.5s;
+}
+
+i.check {
+    display: none;
+}
+
+.checkbox input[type="checkbox"]:checked + .wrapper i.check{
+    display: inline-block;
+    position: absolute;
+    left: 7px;
+    width: 6px;
+    height: 12px;
+    border: solid #414141;
+    border-radius: 3px;
+    border-width: 0 4px 4px 0;
+    transform: rotate( 45deg);
+}
