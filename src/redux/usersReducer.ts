@@ -52,7 +52,7 @@ const usersReducer = (state = initialState, action: ActionsType): InitialStateTy
         case SET_USERS:
             return {...state, usersData: [...action.users]}
         case SET_USERS_CURRENT_PAGE:
-            return {...state, currentPage: +action.numberPage}
+            return {...state, currentPage: action.numberPage}
         case SET_TOTAL_USERS_COUNT:
             return {...state, totalUsersCount: action.totalUsersCount}
         case TOGGLE_PRELOADER:
@@ -164,14 +164,14 @@ export const getUsers = (currentPage: number, pageSize: number, friend: boolean 
     return async (dispatch) => {
         dispatch(setPreloaderToggle(true))
         dispatch(setFilterUsers(term))
-        let data = await usersAPI.getUsers(currentPage, pageSize, null, term)
+        let data = await usersAPI.getUsers(currentPage, pageSize, friend, term)
         dispatch(setPreloaderToggle(false))
         dispatch(setUsers(data.items))
         dispatch(setTotalUsersCount(data.totalCount))
     }
 }
 
-export const follow = (userId: number): ThunkType => {
+export const followAC = (userId: number): ThunkType => {
     return async (dispatch) => {
         dispatch(toggleFollowingProgress(true, userId))
         let data = await usersAPI.follow(userId)
@@ -182,7 +182,7 @@ export const follow = (userId: number): ThunkType => {
     }
 }
 
-export const unfollow = (userId: number): ThunkType => {
+export const unfollowAC = (userId: number): ThunkType => {
     return async (dispatch) => {
         dispatch(toggleFollowingProgress(true, userId))
         let data = await usersAPI.unfollow(userId)

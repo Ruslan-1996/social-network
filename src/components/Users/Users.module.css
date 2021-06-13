@@ -6,21 +6,4 @@
     display: flex;
 }
 
-.selectPage {
-    width: 150px;
-    height: 30px;
-    font-size: 20px;
-    border: none;
-    background-color: yellow;
-    outline: none !important;
-    margin-bottom: 10px;
-    padding-left: 10px;
-}
 
-.optionPage {
-    border: none;
-    background-color: white;
-    width: 150px;
-    height: 20px;
-    font-size: 16px;
-}

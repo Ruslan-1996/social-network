@@ -1,59 +1,71 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import s from './Users.module.css'
 import User from "./User/User";
 import Paginator from "../common/Paginator/Paginator";
-import {UserType} from "../../Types/types";
 import SearchForm from "../common/SearchForm/SearchForm";
-
+import {useDispatch, useSelector} from "react-redux";
+import {
+    getAuthorizedUserId,
+    getCurrentPage,
+    getFilterUsers,
+    getFollowingInProgress,
+    getPageSize,
+    getTotalUsersCount,
+    getUsersData
+} from "../../redux/usersSelectors";
+import {followAC, getUsers, setUsersCurrentPage, unfollowAC} from "../../redux/usersReducer";
+import SelectPaginator from "../common/SelectPaginator/SelectPaginator";
 
 type PropsType = {
-    totalUsersCount: number
     pageSize: number
     currentPage: number
-    onPageChanged: (p: number) => void
-    portionSize?: number
-    usersData: Array<UserType>
-    follow: (userId: number) => void
-    unfollow: (userId: number) => void
-    followingInProgress: Array<number>
-    authorizedUserId: number | null
-    onFilterChanged: (term: string) => void
+    isFriendPage: true | null
+
 }
 
+let Users: React.FC<PropsType> = ({currentPage, pageSize, isFriendPage}) => {
 
-let Users: React.FC<PropsType> = (props) => {
-    let usersData = props.usersData.map(user => <User follow={props.follow} unfollow={props.unfollow}
-                                                      user={user} key={user.id}
-                                                      followingInProgress={props.followingInProgress}
-                                                      authorizedUserId={props.authorizedUserId}/>)
+    const usersData = useSelector(getUsersData)
 
-    let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
+    const totalUsersCount = useSelector(getTotalUsersCount)
+    const followingInProgress = useSelector(getFollowingInProgress)
+    const authorizedUserId = useSelector(getAuthorizedUserId)
+    const filter = useSelector(getFilterUsers)
 
-    let pages = [];
-    let i = 1
-    for (i; i <= pagesCount; i++) {
-        pages.push(i);
+    const dispatch = useDispatch()
+
+    const onPageChanged = (numberPage: number) => {
+        dispatch(setUsersCurrentPage(numberPage))
+        dispatch(getUsers(numberPage, pageSize, isFriendPage, filter));
     }
 
-    let handleChange = (e: any) => {
-        props.onPageChanged(e.target.value)
+    const onFilterChanged = (term: string) => {
+        dispatch(getUsers(1, pageSize, isFriendPage, term))
     }
 
+    const follow = (userId: number) => {
+        dispatch(followAC(userId))
+    }
+
+    const unfollow = (userId: number) => {
+        dispatch(unfollowAC(userId))
+    }
+
+    let usersDataComponent = usersData.map(user => <User follow={follow} unfollow={unfollow}
+                                                         user={user} key={user.id}
+                                                         followingInProgress={followingInProgress}
+                                                         authorizedUserId={authorizedUserId}/>)
 
     return (
         <div className={s.wrapper}>
             <div className={s.menu}>
-                <select onChange={handleChange} value={props.currentPage} className={s.selectPage}>
-                    {pages.map(p => (
-                        <option key={p} className={s.optionPage}>{p} </option>
-                    ))}
-                </select>
-
-                <SearchForm onFilterChanged={props.onFilterChanged}/>
+                <SelectPaginator totalItemsCount={totalUsersCount} pageSize={pageSize} currentPage={currentPage}
+                                 onPageChanged={onPageChanged}/>
+                <SearchForm onFilterChanged={onFilterChanged}/>
             </div>
-            {usersData}
-            <Paginator totalItemsCount={props.totalUsersCount} pageSize={props.pageSize}
-                       currentPage={props.currentPage} onPageChanged={props.onPageChanged}/>
+            {usersDataComponent}
+            <Paginator totalItemsCount={totalUsersCount} pageSize={pageSize}
+                       currentPage={currentPage} onPageChanged={onPageChanged}/>
         </div>)
 }
 

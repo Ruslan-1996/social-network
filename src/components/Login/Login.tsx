@@ -1,14 +1,13 @@
 import s from './Login.module.css';
 import {Field, Form} from "react-final-form";
 import {Input} from "../common/FormsControls/FormsControls";
-import {connect, useDispatch, useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {login} from "../../redux/authReducer";
 import {Redirect} from "react-router-dom";
 import {useState} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEye, faEyeSlash} from "@fortawesome/free-solid-svg-icons";
 import {AppStateType} from "../../redux/reduxStore";
-import {currentPage} from "../../redux/usersSelectors";
 
 const LoginForm: React.FC = (props) => {
 
@@ -23,6 +22,7 @@ const LoginForm: React.FC = (props) => {
 
     const errorAuth = useSelector((state: AppStateType) => state.auth.errorAuth)
     const captchaURL = useSelector((state: AppStateType) => state.auth.captchaURL)
+
 
     const dispatch = useDispatch()
 

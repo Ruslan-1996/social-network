@@ -1,5 +1,5 @@
 import React from 'react'
-import {BrowserRouter, Redirect, Route, Switch} from "react-router-dom";
+import {BrowserRouter, HashRouter, Redirect, Route, Switch} from "react-router-dom";
 import './App.css';
 import NavBar from "./components/NavBar/NavBar";
 import News from "./components/News/News";
@@ -57,9 +57,9 @@ class App extends React.Component<PropsType> {
                             <Route path='/news' render={() => <News/>}/>
                             <Route path='/music' render={() => <Music/>}/>
                             <Route path='/setting' render={() => <Setting/>}/>
-                            <Route path='/friends' render={() => <FriendsContainer/>}/>
-                            <Route path='/users' render={() => <UsersContainer/>}/>
+                            {/*<Route path='/friends' render={() => <FriendsContainer/>}/>*/}
                             <Route path='/login' render={WithSuspense(Login)}/>
+                            <Route path='/:users?' render={() => <UsersContainer/>}/>
                             <Route path='*' render={() => <Error404/>}/>
                         </Switch>
                     </div>

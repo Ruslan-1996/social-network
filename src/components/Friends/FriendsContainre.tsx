@@ -1,24 +1,21 @@
 import React from 'react';
 import {connect} from "react-redux";
-import {
-    follow, getUsers,
-    setTotalUsersCount,
-    setUsersCurrentPage,
-    unfollow,
-} from "../../redux/friendsReducer";
+import {follow, getUsers, setUsersCurrentPage, unfollow,} from "../../redux/friendsReducer";
 import Friends from "./Friends";
 import PreloaderUsers from "./User/PreloaderUsers/PreloaderUsers";
 import {UserType} from "../../Types/types";
 import {AppStateType} from "../../redux/reduxStore";
 import {
-    authorizedUserId,
-    currentPage,
-    followingInProgress,
-    isPreloader,
-    pageSize,
-    totalUsersCount,
-    usersData
+    getAuthorizedUserId,
+    getCurrentPage,
+    getFollowingInProgress,
+    getIsPreloader,
+    getPageSize,
+    getTotalUsersCount,
+    getUsersData
 } from "../../redux/usersSelectors";
+import {compose} from "redux";
+import withAuthRedirect from "../../hoc/withAuthRedirect";
 
 type MapStatePropsType = {
     currentPage: number
@@ -71,23 +68,25 @@ class UserAPIComponent extends React.Component<PropsType> {
 
 let mapStateToProps = (state: AppStateType): MapStatePropsType => {
     return {
-        usersData: usersData(state),
-        pageSize: pageSize(state),
-        totalUsersCount: totalUsersCount(state),
-        currentPage: currentPage(state),
-        isPreloader: isPreloader(state),
-        followingInProgress: followingInProgress(state),
-        authorizedUserId: authorizedUserId(state),
+        usersData: getUsersData(state),
+        pageSize: getPageSize(state),
+        totalUsersCount: getTotalUsersCount(state),
+        currentPage: getCurrentPage(state),
+        isPreloader: getIsPreloader(state),
+        followingInProgress: getFollowingInProgress(state),
+        authorizedUserId: getAuthorizedUserId(state),
     }
 }
 
 
 //TStateProps = {}, TDispatchProps = {}, TOwnProps = {}, State = DefaultState
-const FriendsContainer = connect<MapStatePropsType, MapDispatchPropsType, {}, AppStateType>(mapStateToProps,
+const FriendsContainer = compose<React.ComponentType>(
+    withAuthRedirect,
+    connect<MapStatePropsType, MapDispatchPropsType, {}, AppStateType>(mapStateToProps,
     {
         follow, unfollow,
         setUsersCurrentPage, getUsers
-    })
+    }))
 (UserAPIComponent);
 
 export default FriendsContainer;

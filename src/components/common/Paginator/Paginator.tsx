@@ -27,7 +27,7 @@ let Paginator: React.FC<PropsType> = ({portionSize = 20, ...props}) => {
 
     return (
         <div>
-            <button disabled={portionNumber === 1 && true} className={s.buttonChangeList} onClick={() => {
+            <button disabled={portionNumber === 1} className={s.buttonChangeList} onClick={() => {
                 setPortionNumber(portionNumber - 1)
             }}>Last
             </button>
@@ -38,7 +38,7 @@ let Paginator: React.FC<PropsType> = ({portionSize = 20, ...props}) => {
                         {p}
                     </button>
                 ))}
-            <button disabled={portionNumber === portionCount && true} className={s.buttonChangeList} onClick={() => {
+            <button disabled={portionNumber === portionCount} className={s.buttonChangeList} onClick={() => {
                 setPortionNumber(portionNumber + 1)
             }}>Next
             </button>

@@ -1,33 +1,33 @@
 import {AppStateType} from "./reduxStore";
 
-export const usersData = (state: AppStateType) => {
+export const getUsersData = (state: AppStateType) => {
     return state.usersReducer.usersData
 }
 
-export const pageSize = (state: AppStateType) => {
+export const getPageSize = (state: AppStateType) => {
     return state.usersReducer.pageSize
 }
 
-export const totalUsersCount = (state: AppStateType) => {
+export const getTotalUsersCount = (state: AppStateType) => {
     return state.usersReducer.totalUsersCount
 }
 
-export const currentPage = (state: AppStateType) => {
+export const getCurrentPage = (state: AppStateType) => {
     return state.usersReducer.currentPage
 }
 
-export const isPreloader = (state: AppStateType) => {
+export const getIsPreloader = (state: AppStateType) => {
     return state.usersReducer.isPreloader
 }
 
-export const followingInProgress = (state: AppStateType) => {
+export const getFollowingInProgress = (state: AppStateType) => {
     return state.usersReducer.followingInProgress
 }
 
-export const authorizedUserId = (state: AppStateType) => {
+export const getAuthorizedUserId = (state: AppStateType) => {
     return state.auth.id
 }
 
-export const filterUsers = (state: AppStateType) => {
+export const getFilterUsers = (state: AppStateType) => {
     return state.usersReducer.filter
 }
