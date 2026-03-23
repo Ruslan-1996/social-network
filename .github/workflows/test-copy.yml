@@ -1,0 +1,19 @@
+name: Test copy to runner
+
+on:
+  push:
+    branches:
+      - test
+
+jobs:
+  copy-files:
+    runs-on: [self-hosted, social-network]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Copy files to test folder
+        run: |
+          mkdir -p ~/landing-test-build
+          rsync -av --delete ./ ~/landing-test-build/
